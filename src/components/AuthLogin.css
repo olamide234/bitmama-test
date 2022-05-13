@@ -1,0 +1,22 @@
+.bt__authLogin{
+    padding: 24px 40px;
+    width: 424px;
+    margin: 30vh auto;
+    text-align: start;
+}
+
+.bt__authLogin button {
+    display: block;
+    color: black;
+    padding: 12px;
+    background-color: greenyellow;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 15px;
+    border: none;
+}
+.bt__authLogin input {
+    margin-top: 16px;
+    width: 100%;
+    padding: 15px;
+}

@@ -8,11 +8,11 @@ import AuthLogin from "./components/AuthLogin";
 import Home from "./components/Home";
 
 function App() {
-  const[name, setCode] = useState('')
+  const[name, setName] = useState('')
   let navigate = useNavigate();
 
   useEffect(() => {
-    setCode(localStorage.getItem("name"));
+    setName(sessionStorage.getItem("name"));
     if (name) {
       return navigate("/");
     } else {
@@ -23,7 +23,7 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home guest={name}/>} />
         <Route path="/login" element={<AuthLogin />} />
       </Routes>
   );
