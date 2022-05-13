@@ -1,10 +1,18 @@
-import React from 'react'
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {useNavigate, useLocation} from "react-router-dom";
 import "./Home.css"
 
 export default function Home({guest}) {
-    // const[guest, setGuest] = useState("Guest")
+    const[named, setNamed] = useState("")
     let navigate = useNavigate()
+    let location = useLocation();
+
+    useEffect(() => {
+        let abc = location.state
+        for (let i in abc){
+            setNamed(abc[i])
+        }
+    }, [location]);
 
     const activeUsers = (arr) => {
         const name = sessionStorage.getItem('name')
@@ -25,7 +33,7 @@ export default function Home({guest}) {
             console.log(presentUsers)
 
             localStorage.setItem("allUsers", JSON.stringify(presentUsers))
-        } else if (previousUsers.length == 1) {
+        } else if (previousUsers.length === 1) {
             localStorage.removeItem('allUsers');
         }
 
@@ -35,11 +43,22 @@ export default function Home({guest}) {
         // sessionStorage.removeItem('sessionId');
         navigate('/login');
     }
+    
+    const onNewLogin = () => {
+        // onLogout
+        sessionStorage.removeItem('name');
+        window.open(String(process.env.REACT_APP_REDIRECT_URI), "_blank").focus()
+    }
 
     return (
         <div className="bt__home">
-            <h1>Welcome, {guest}</h1>
-            <button onClick={onLogout}>Logout</button>
+            <h1>Welcome, {guest || named}</h1>
+            <div className="bt__home-btns" >
+                <button onClick={onLogout}>Logout</button>
+                <button onClick={onNewLogin}> Login differently</button>
+            </div>
         </div>
     )
 }
+
+// {(location.state.name != null) ? location.state.name : guest
