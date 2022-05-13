@@ -16,37 +16,26 @@ export default function Home({guest}) {
 
     const activeUsers = (arr) => {
         const name = sessionStorage.getItem('name')
-        let value = {username: String(name)}
-        console.log(value)
-        return arr.filter(item => item !== {username: String(name)})
-        // return value !== {username: name}
+        const value = {username: String(name)}
+        const index = arr.indexOf(value);
+        arr.splice(index, 1)
+        return arr;
     }
     const onLogout = () => {
         let previousUsers = JSON.parse(localStorage.getItem("allUsers"))
-        // const value = sessionStorage.getItem('name')
-        // {previousUsers.map(item => {
-        //     console.log({item})
-        // })}
-        console.log(typeof(previousUsers))
         if (previousUsers.length > 1) {
             let presentUsers = activeUsers(previousUsers)
-            console.log(presentUsers)
-
             localStorage.setItem("allUsers", JSON.stringify(presentUsers))
         } else if (previousUsers.length === 1) {
             localStorage.removeItem('allUsers');
         }
 
         sessionStorage.removeItem('name');
-        
-        // localStorage.removeItem('name');
-        // sessionStorage.removeItem('sessionId');
         navigate('/login');
     }
     
     const onNewLogin = () => {
-        // onLogout
-        sessionStorage.removeItem('name');
+        onLogout();
         window.open(String(process.env.REACT_APP_REDIRECT_URI), "_blank").focus()
     }
 
@@ -60,5 +49,3 @@ export default function Home({guest}) {
         </div>
     )
 }
-
-// {(location.state.name != null) ? location.state.name : guest

@@ -13,16 +13,8 @@ export default function AuthLogin(props) {
 
     sessionStorage.setItem("name", nameLowerCase);
 
-    // if (localStorage.getItem("allUsers")) {
-    //     let previousUsers = JSON.parse(localStorage.getItem("allUsers"))
-
-    // }
-
     if (localStorage.getItem("allUsers")) {
       let previousUsers = JSON.parse(localStorage.getItem("allUsers"));
-      // console.log(previousUsers)
-      // console.log(previousUsers.length)
-
       for (let user of previousUsers) {
         if (user.username === nameLowerCase) {
           // remove the previous username on localstorage to prevent duplicates
@@ -35,15 +27,10 @@ export default function AuthLogin(props) {
     } else {
       localStorage.setItem(
         "allUsers",
-        JSON.stringify([{ username: nameLowerCase }])
+        JSON.stringify([{username: nameLowerCase}])
       );
     }
-    
-    // <Link to={{
-    //     pathname: "/",
-    //     state: { name: username }
-    // }}
-    // />
+
     setUsername("")
     navigate("/", {state: { name: nameLowerCase }})
   };
