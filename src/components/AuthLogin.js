@@ -13,40 +13,30 @@ export default function AuthLogin(props) {
 
     sessionStorage.setItem("name", nameLowerCase);
 
-    // if (localStorage.getItem("allUsers")) {
-    //     let previousUsers = JSON.parse(localStorage.getItem("allUsers"))
-
-    // }
-
-    // const value = {username: nameLowerCase};
-    //   const index = previousUsers.indexOf("value");
-    //   console.log(index);
-    //   previousUsers.splice(index, 1)
-    //   window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
-
     if (localStorage.getItem("allUsers")) {
+      let index;
       let previousUsers = JSON.parse(localStorage.getItem("allUsers"));
-      // console.log(previousUsers)
-      // console.log(previousUsers.length)
 
-      for (let user of previousUsers) {
-        if (user.username === nameLowerCase) {
-          // remove the previous username on localstorage to prevent duplicates
-          window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
+      for (let i in previousUsers) {
+        // remove the previous username on localstorage to prevent duplicates
+        if (nameLowerCase === previousUsers[i].username) {
+          index = i;
+          //   window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
         }
       }
+      previousUsers.splice(index, 1);
 
       previousUsers.push({ username: nameLowerCase });
       localStorage.setItem("allUsers", JSON.stringify(previousUsers));
     } else {
       localStorage.setItem(
         "allUsers",
-        JSON.stringify([{username: nameLowerCase}])
+        JSON.stringify([{ username: nameLowerCase }])
       );
     }
 
-    setUsername("")
-    navigate("/", {state: { name: nameLowerCase }})
+    setUsername("");
+    navigate("/", { state: { name: nameLowerCase } });
   };
 
   const handleChange = (evt) => {
