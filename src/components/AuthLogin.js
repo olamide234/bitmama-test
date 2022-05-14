@@ -13,8 +13,22 @@ export default function AuthLogin(props) {
 
     sessionStorage.setItem("name", nameLowerCase);
 
+    // if (localStorage.getItem("allUsers")) {
+    //     let previousUsers = JSON.parse(localStorage.getItem("allUsers"))
+
+    // }
+
+    // const value = {username: nameLowerCase};
+    //   const index = previousUsers.indexOf("value");
+    //   console.log(index);
+    //   previousUsers.splice(index, 1)
+    //   window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
+
     if (localStorage.getItem("allUsers")) {
       let previousUsers = JSON.parse(localStorage.getItem("allUsers"));
+      // console.log(previousUsers)
+      // console.log(previousUsers.length)
+
       for (let user of previousUsers) {
         if (user.username === nameLowerCase) {
           // remove the previous username on localstorage to prevent duplicates

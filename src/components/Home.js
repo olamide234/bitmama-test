@@ -16,8 +16,12 @@ export default function Home({guest}) {
 
     const activeUsers = (arr) => {
         const name = sessionStorage.getItem('name')
-        const value = {username: String(name)}
-        const index = arr.indexOf(value);
+        let index;
+        for (let i in arr) {
+            if (name === arr[i].username) {
+                index = i;
+            }
+        }
         arr.splice(index, 1)
         return arr;
     }
