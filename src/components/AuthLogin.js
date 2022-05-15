@@ -17,15 +17,19 @@ export default function AuthLogin(props) {
       let index;
       let previousUsers = JSON.parse(localStorage.getItem("allUsers"));
 
+      // remove the previous username on localstorage to prevent duplicates
       for (let i in previousUsers) {
-        // remove the previous username on localstorage to prevent duplicates
         if (nameLowerCase === previousUsers[i].username) {
           index = i;
-            window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
+          console.log(index)
+          const myWindow = window.open(
+            String(process.env.REACT_APP_REDIRECT_URI)
+          );
+          previousUsers.splice(index, 1);
+          return myWindow.focus();
         }
       }
-      previousUsers.splice(index, 1);
-
+      
       previousUsers.push({ username: nameLowerCase });
       localStorage.setItem("allUsers", JSON.stringify(previousUsers));
     } else {
