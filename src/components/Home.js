@@ -40,7 +40,7 @@ export default function Home({guest}) {
     
     const onNewLogin = () => {
         onLogout();
-        window.open(String(process.env.REACT_APP_REDIRECT_URI), "_blank").focus()
+        window.open(String(process.env.REACT_APP_REDIRECT_URI), "_self").focus()
     }
 
     return (
