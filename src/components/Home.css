@@ -1,17 +1,33 @@
 .bt__home{
-    padding: 24px 40px;
+    width: 100vw;
+    height: 100vh;
+    /* margin: 0; */
+}
+.bt__home-content{
+    padding: 60px 40px;
     width: 85%;
-    margin: 5vh auto;
+    margin: 0 auto;
     text-align: start;
 }
-.bt__home h1{
-    font-size: 50px;
-}
-.bt__home-btns{
+.bt__home-content__text{
     display: flex;
     justify-content: space-between;
 }
-.bt__home-btns button{
+.bt__home-content__text button{
+    padding: 10px;
+    background-color: greenyellow;
+    border: none;
+    height: 35px;
+}
+.bt__home-content h1{
+    font-size: 50px;
+}
+.bt__home-content__btns{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+.bt__home-content__btns button{
     color: black;
     padding: 12px;
     background-color: greenyellow;
@@ -19,4 +35,5 @@
     margin-top: 50px;
     font-size: 15px;
     border: none;
+    cursor: pointer;
 }
