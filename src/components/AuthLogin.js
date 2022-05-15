@@ -21,7 +21,7 @@ export default function AuthLogin(props) {
         // remove the previous username on localstorage to prevent duplicates
         if (nameLowerCase === previousUsers[i].username) {
           index = i;
-          //   window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
+            window.open(String(process.env.REACT_APP_REDIRECT_URI)).focus();
         }
       }
       previousUsers.splice(index, 1);
