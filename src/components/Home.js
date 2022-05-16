@@ -66,7 +66,7 @@ export default function Home({ guest }) {
           <h1>Welcome, {guest || named}</h1>
           <button>{active ? "Active" : "Idle"}</button>
         </div>
-        <div className="bt__home-content__sess"> {activesessions && "Other active sessions are:"}
+        <div className="bt__home-content__sess"> {activesessions.length > 1 && "Other active sessions are:"}
           {activesessions.map((item, index) => (
             ((guest || named) !== item) && <li key={index}>Username {item}</li>
           ))}
