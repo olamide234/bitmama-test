@@ -1,7 +1,6 @@
 .bt__home{
     width: 100vw;
     height: 100vh;
-    /* margin: 0; */
 }
 .bt__home-content{
     padding: 60px 40px;
@@ -45,4 +44,35 @@
     font-size: 15px;
     border: none;
     cursor: pointer;
+}
+@media screen and (max-width:650px) {
+    .bt__home-content h1{
+        font-size: 35px;
+    }
+    .bt__home-content__btns button{
+        width: 140px;
+    }
+}
+@media screen and (max-width:550px) {
+    .bt__home-content{
+        width: 100%;
+    }
+}    
+@media screen and (max-width:400px) {
+    .bt__home-content{
+        padding: 60px 20px;
+    }
+    .bt__home-content__btns button{
+        width: 110px;
+        font-size: 12px;
+    }
+    .bt__home-content h1{
+        font-size: 25px;
+    }
+    .bt__home-content__sess{
+        font-size: 19px;
+    }
+    .bt__home-content__sess li{
+        font-size: 16px;
+    }
 }
