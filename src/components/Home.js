@@ -5,14 +5,23 @@ import "./Home.css";
 export default function Home({ guest }) {
   const [named, setNamed] = useState("");
   const [active, setActive] = useState(true);
+  const [activesessions, setActivesessions] = useState([]);
   let navigate = useNavigate();
   let location = useLocation();
 
   useEffect(() => {
     let abc = location.state;
+    let activeSessn = JSON.parse(localStorage.getItem("allUsers"));
+    let sess = [];
+
     for (let i in abc) {
       setNamed(abc[i]);
     }
+
+    for (let i in activeSessn) {
+      sess.push(activeSessn[i].username);
+    }
+    setActivesessions(sess);
   }, [location]);
 
   const activeUsers = (arr) => {
@@ -56,6 +65,11 @@ export default function Home({ guest }) {
         <div className="bt__home-content__text">
           <h1>Welcome, {guest || named}</h1>
           <button>{active ? "Active" : "Idle"}</button>
+        </div>
+        <div className="bt__home-content__sess"> {activesessions && "Other active sessions are:"}
+          {activesessions.map((item, index) => (
+            ((guest || named) !== item) && <li key={index}>Username {item}</li>
+          ))}
         </div>
         <div className="bt__home-content__btns">
           <button onClick={onLogout}>Logout</button>

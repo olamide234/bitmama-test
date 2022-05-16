@@ -9,9 +9,18 @@
     margin: 0 auto;
     text-align: start;
 }
+.bt__home-content__sess{
+    font-size: 25px;
+    margin-top: 40px;
+}
+.bt__home-content__sess li{
+    font-size: 20px;
+    margin-top: 10px;
+}
 .bt__home-content__text{
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 .bt__home-content__text button{
     padding: 10px;
